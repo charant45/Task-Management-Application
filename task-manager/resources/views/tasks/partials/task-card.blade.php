@@ -7,12 +7,14 @@
             @endif">
             {{ ucfirst($task->priority) }}
         </span>
-        <div class="relative">
-            <select onchange="updateTaskStatus({{ $task->id }}, this.value)" 
-                    class="appearance-none bg-transparent border border-gray-300 text-gray-700 py-1 px-2 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 text-sm">
-                <option value="todo" @if($task->status == 'todo') selected @endif>Todo</option>
-                <option value="in progress" @if($task->status == 'in progress') selected @endif>In Progress</option>
-                <option value="done" @if($task->status == 'done') selected @endif>Completed</option>
+        <div class="relative inline-block w-32">
+            <select 
+                onchange="updateTaskStatus({{ $task->id }}, this.value)" 
+                class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-3 py-1 pr-8 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm transition duration-150 ease-in-out"
+            >
+                <option value="todo" {{ $task->status == 'todo' ? 'selected' : '' }}>Todo</option>
+                <option value="in progress" {{ $task->status == 'in progress' ? 'selected' : '' }}>In Progress</option>
+                <option value="done" {{ $task->status == 'done' ? 'selected' : '' }}>Completed</option>
             </select>
             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
